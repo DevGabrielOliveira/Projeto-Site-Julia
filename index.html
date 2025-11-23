@@ -1,0 +1,1170 @@
+<!doctype html>
+<html lang="pt-BR">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blinke Nails - Studio de Nail Design</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #2d2d2d;
+      background: #fafafa;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      overflow-x: hidden;
+    }
+
+    .photo-placeholder {
+    width: 100%;
+    height: 200px;        /* pode ajustar */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 15px;
+    background-color: #fff; /* opcional, caso tenha áreas vazias */
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Navigation */
+    .navbar {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 15px 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+    }
+
+    .nav-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .logo {
+      font-size: 1.8em;
+      font-weight: 700;
+      color: #1e3a8a;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #2d2d2d;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #1e3a8a;
+    }
+
+    .nav-cta {
+      background: linear-gradient(135deg, #3b82f6 0%, #1e3a8a 100%);
+      color: white;
+      padding: 12px 25px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: transform 0.3s ease;
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-2px);
+    }
+
+    /* Hero Section */
+    .hero {
+      background: #1e3a8a;
+      color: #2d2d2d;
+      text-align: center;
+      padding: 150px 20px 100px;
+      position: relative;
+      overflow: hidden;
+      min-height: 90%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-rows: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0;
+      opacity: 0.15;
+      z-index: 1;
+    }
+
+    .nail-image {
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      filter: grayscale(20%) brightness(1.1);
+    }
+
+    .nail-image:nth-child(1) {
+      background: linear-gradient(45deg, #ff6b9d 0%, #f06292 100%);
+      position: relative;
+    }
+
+    .nail-image:nth-child(1)::before {
+      content: '�������';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 4em;
+      opacity: 0.6;
+    }
+
+    .nail-image:nth-child(2) {
+      background: linear-gradient(135deg, #ec407a 0%, #d81b60 100%);
+      position: relative;
+    }
+
+    .nail-image:nth-child(2)::before {
+      content: '✨';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 4em;
+      opacity: 0.6;
+    }
+
+    .nail-image:nth-child(3) {
+      background: linear-gradient(225deg, #f48fb1 0%, #f06292 100%);
+      position: relative;
+    }
+
+    .nail-image:nth-child(3)::before {
+      content: '💎';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 4em;
+      opacity: 0.6;
+    }
+
+    .nail-image:nth-child(4) {
+      background: linear-gradient(315deg, #ce93d8 0%, #ba68c8 100%);
+      position: relative;
+    }
+
+    .nail-image:nth-child(4)::before {
+      content: '🌸';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 4em;
+      opacity: 0.6;
+    }
+
+    .nail-image:nth-child(5) {
+      background: linear-gradient(45deg, #ffb74d 0%, #ff9800 100%);
+      position: relative;
+    }
+
+    .nail-image:nth-child(5)::before {
+      content: '🦋';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 4em;
+      opacity: 0.6;
+    }
+
+    .nail-image:nth-child(6) {
+      background: linear-gradient(135deg, #64b5f6 0%, #42a5f5 100%);
+      position: relative;
+    }
+
+    .nail-image:nth-child(6)::before {
+      content: '🌟';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 4em;
+      opacity: 0.6;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(30,58,138,0.92) 0%, rgba(59,130,246,0.92) 100%);
+      z-index: 2;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at 30% 70%, rgba(255,255,255,0.1) 1px, transparent 1px),
+                  radial-gradient(circle at 70% 30%, rgba(255,255,255,0.1) 1px, transparent 1px);
+      background-size: 50px 50px, 80px 80px;
+      animation: sparkle 15s ease-in-out infinite;
+      z-index: 3;
+    }
+
+    @keyframes sparkle {
+      0%, 100% { opacity: 0.3; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(1.1); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 4;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.9);
+      backdrop-filter: blur(10px);
+      padding: 8px 20px;
+      border-radius: 25px;
+      font-size: 0.9em;
+      font-weight: 500;
+      margin-bottom: 30px;
+      border: 1px solid rgba(255,255,255,0.8);
+      color: #1e3a8a;
+    }
+
+    .hero h1 {
+      font-size: 4em;
+      margin-bottom: 25px;
+      font-weight: 700;
+      letter-spacing: -1px;
+      line-height: 1.1;
+      animation: fadeInUp 1s ease-out;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+      color: white;
+    }
+
+    .hero h1 strong {
+      font-weight: 400;
+      font-size: 0.5em;
+      display: block;
+      margin-top: 15px;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+      letter-spacing: 0.5px;
+      opacity: 0.9;
+    }
+
+    .hero p {
+      font-size: 1.3em;
+      margin-bottom: 40px;
+      font-weight: 300;
+      opacity: 0.9;
+      line-height: 1.6;
+      animation: fadeInUp 1s ease-out 0.3s both;
+      color: white;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+      animation: fadeInUp 1s ease-out 0.6s both;
+    }
+
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: white;
+      color: #1e3a8a;
+      padding: 18px 35px;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 1.1em;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+      border: 2px solid transparent;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+      background: #f8f8f8;
+    }
+
+    .cta-button.secondary {
+      background: rgba(255,255,255,0.9);
+      color: #1e3a8a;
+      border: 2px solid rgba(255,255,255,0.8);
+    }
+
+    .cta-button.secondary:hover {
+      background: white;
+      border-color: white;
+      color: #1e3a8a;
+    }
+
+    /* Section Styles */
+    section {
+      padding: 100px 20px;
+    }
+
+    section:nth-child(even) {
+      background: #fafafa;
+    }
+
+    section:nth-child(odd) {
+      background: white;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.8em;
+      margin-bottom: 60px;
+      color: #1e3a8a;
+      font-weight: 700;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(135deg, #3b82f6 0%, #1e3a8a 100%);
+      border-radius: 2px;
+    }
+
+    /* About Section */
+    .about-content {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+      font-size: 1.2em;
+      line-height: 1.8;
+      background: linear-gradient(135deg, #f0f7ff 0%, #e6f2ff 100%);
+      padding: 50px;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(30,58,138,0.15);
+      border: 1px solid rgba(59,130,246,0.2);
+    }
+
+    /* Services Section */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      margin-top: 60px;
+    }
+
+    .service-card {
+      background: white;
+      padding: 0;
+      border-radius: 15px;
+      box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+      transition: all 0.4s ease;
+      text-align: left;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid #f0f0f0;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(30,58,138,0.15);
+      border-color: #1e3a8a;
+    }
+
+    .service-header {
+      padding: 30px 30px 20px;
+      background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
+      border-bottom: 1px solid #eee;
+    }
+
+    .service-card h3 {
+      color: #1e3a8a;
+      font-size: 1.3em;
+      font-weight: 600;
+    }
+
+    .service-body {
+      padding: 25px 30px 30px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .service-card p {
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      font-size: 0.95em;
+    }
+
+    .photo-placeholder {
+      width: 100%;
+      height: 200px;
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      border: 2px dashed #1e3a8a;
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3em;
+      color: #1e3a8a;
+      margin-top: auto;
+      transition: all 0.3s ease;
+    }
+
+    .photo-placeholder:hover {
+      background: linear-gradient(135deg, #3b82f620 0%, #1e3a8a20 100%);
+      transform: scale(1.02);
+    }
+
+    /* Julia Section */
+    .julia-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: flex-start;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .julia-text {
+      background: white;
+      padding: 50px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    .julia-text h3 {
+      color: #1e3a8a;
+      font-size: 2em;
+      margin-bottom: 25px;
+      font-weight: 600;
+    }
+
+    .julia-text p {
+      margin-bottom: 20px;
+      line-height: 1.8;
+      color: #555;
+      font-size: 1.1em;
+    }
+
+    .julia-text strong {
+      color: #1e3a8a;
+    }
+
+    .professional-badge {
+      display: inline-flex;
+      align-items: center;
+      background: linear-gradient(135deg, #3b82f6 0%, #1e3a8a 100%);
+      color: white;
+      padding: 8px 20px;
+      border-radius: 25px;
+      font-size: 0.9em;
+      font-weight: 600;
+      margin-bottom: 20px;
+      box-shadow: 0 3px 10px rgba(30,58,138,0.3);
+    }
+
+    .credentials-grid {
+      display: grid;
+      gap: 20px;
+      margin: 30px 0;
+    }
+
+    .credential-item {
+      display: flex;
+      align-items: flex-start;
+      padding: 20px;
+      background: #f8f9fa;
+      border-radius: 12px;
+      border-left: 4px solid #1e3a8a;
+    }
+
+    .credential-info strong {
+      display: block;
+      color: #1e3a8a;
+      font-size: 1.1em;
+      margin-bottom: 5px;
+    }
+
+    .credential-info p {
+      margin: 0;
+      color: #666;
+      font-size: 0.95em;
+      line-height: 1.4;
+    }
+
+    .certifications {
+      margin-top: 35px;
+      padding-top: 25px;
+      border-top: 2px solid #f0f0f0;
+    }
+
+    .certifications h4 {
+      color: #1e3a8a;
+      font-size: 1.3em;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+
+    .cert-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .cert-item {
+      display: flex;
+      align-items: center;
+      padding: 12px 0;
+    }
+
+    .cert-item span {
+      color: #555;
+      line-height: 1.4;
+    }
+
+    .julia-photo {
+      background: linear-gradient(135deg, #3b82f6 0%, #1e3a8a 100%);
+      border-radius: 25px;
+      height: 500px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10em;
+      box-shadow: 0 15px 50px rgba(30,58,138,0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .julia-photo::before {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.2em;
+      color: white;
+      background: rgba(0,0,0,0.3);
+      padding: 10px 20px;
+      border-radius: 20px;
+      font-weight: 500;
+    }
+
+    /* Contact Section */
+    .contact-content {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .contact-info {
+      background: white;
+      padding: 50px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      margin-bottom: 40px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      text-align: left;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+    }
+
+    .contact-details strong {
+      color: #1e3a8a;
+      display: block;
+      margin-bottom: 8px;
+      font-size: 1.3em;
+    }
+
+    .contact-details p {
+      color: #666;
+      font-size: 1.1em;
+      line-height: 1.5;
+    }
+
+    .social-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, #3b82f6 0%, #1e3a8a 100%);
+      color: white;
+      padding: 15px 35px;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1.1em;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 20px rgba(30,58,138,0.3);
+    }
+
+    .social-link:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(30,58,138,0.4);
+    }
+
+    /* Footer */
+    footer {
+      background: #2d2d2d;
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    /* Mobile Navigation */
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+    }
+
+    .mobile-menu span {
+      width: 25px;
+      height: 3px;
+      background: #c44569;
+      transition: 0.3s;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .mobile-menu {
+        display: flex;
+      }
+
+      .hero {
+        padding: 120px 20px 80px;
+      }
+
+      .hero h1 {
+        font-size: 2.8em;
+      }
+
+      .hero p {
+        font-size: 1.1em;
+      }
+
+      .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .section-title {
+        font-size: 2.2em;
+      }
+
+      .julia-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-info {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .contact-item {
+        justify-content: center;
+        text-align: center;
+      }
+
+      .social-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .about-content,
+      .julia-text {
+        padding: 30px;
+      }
+
+      .service-header,
+      .service-body {
+        padding: 25px 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero {
+        padding: 60px 15px;
+      }
+
+      .hero h1 {
+        font-size: 2em;
+      }
+
+      .hero p {
+        font-size: 1.2em;
+      }
+
+      .cta-button {
+        padding: 15px 30px;
+        font-size: 1em;
+      }
+
+      section {
+        padding: 60px 15px;
+      }
+
+      .service-card {
+        padding: 30px 20px;
+      }
+
+      
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+ <body><!-- Navigation -->
+  <nav class="navbar">
+   <div class="nav-content"><a href="#" class="logo">Blinke Nails</a>
+    <ul class="nav-links">
+     <li><a href="#about">Studio</a></li>
+     <li><a href="#services">Serviços</a></li>
+     <li><a href="#julia">Profissional</a></li>
+     <li><a href="#contact">Contato</a></li>
+    </ul>
+   </div>
+  </nav><!-- Hero Section -->
+  <section class="hero">
+   <div class="hero-background">
+    <div class="nail-image"></div>
+    <div class="nail-image"></div>
+    <div class="nail-image"></div>
+    <div class="nail-image"></div>
+    <div class="nail-image"></div>
+    <div class="nail-image"></div>
+   </div>
+   <div class="hero-overlay"></div>
+   <div class="container">
+    <div class="hero-content">
+     <div class="hero-badge">
+      Studio Especializado em Nail Design
+     </div>
+     <h1 id="hero-title">Seja bem vinda!</h1>
+     <p id="hero-subtitle">Transforme suas unhas em verdadeiras obras de arte com técnicas profissionais e produtos de alta qualidade. Mais de 4 anos cuidando da sua beleza.</p>
+     <div class="cta-buttons"><a href="https://wa.me/+5516993134829?text=Ol%C3%A1,%20vim%20pelo%20site,%20gostaria%20de%20agendar%20um%20hor%C3%A1rio!" target="_blank" rel="noopener noreferrer" class="cta-button" id="cta-button">
+       <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" fill="#1e3a8a" />
+       </svg><span id="cta-button-text">Agendar Horário</span> </a> <a href="#services" class="cta-button secondary"> Ver Serviços </a>
+     </div>
+    </div>
+   </div>
+  </section><!-- About Section -->
+  <section id="about">
+   <div class="container">
+    <h2 class="section-title" id="about-title">Sobre o Studio</h2>
+    <div class="about-content">
+     <p id="about-text">O Studio Blinke Nails, localizado na Rua Conselheiro Antonio Prado, nº 471, Centro em São Simão/SP, foi fundado pela Nail designer Julia Blinke. O studio é especializado em nail design, com serviços como alongamento de unhas em fibra de vidro, esmaltação em gel e nail art. Há mais de 4 anos trazendo autoestima para sua vida.</p>
+    </div>
+   </div>
+  </section><!-- Services Section -->
+  <section id="services">
+   <div class="container">
+    <h2 class="section-title" id="services-title">Nossos Serviços</h2>
+    <div class="services-grid">
+     <div class="service-card">
+      <div class="service-header">
+       <h3>Aplicação de Alongamento</h3>
+      </div>
+      <div class="service-body">
+       <p>Alongamento de unhas em fibra de vidro com acabamento perfeito e durabilidade excepcional para unhas naturalmente longas e resistentes.</p>
+       <div class="photo-placeholder"
+       style="background-image: url('fotos/Alongamento.jpg');
+       background-size: cover;
+       background-repeat: no-repeat;
+       background-position: center;
+       "</div>
+       </div>
+      </div>
+     </div>
+     <div class="service-card">
+      <div class="service-header">
+       <h3>Manutenção de Alongamento</h3>
+      </div>
+      <div class="service-body">
+       <p>Manutenção completa e cuidadosa para manter suas unhas alongadas sempre impecáveis, saudáveis e com aparência renovada.</p>
+       <div class="photo-placeholder"
+       style="background-image: url('fotos/Manutenção.jpg');
+       background-size:cover;
+       background-repeat: no-repeat;
+       background-position: center;
+       "> 
+       </div>
+      </div>
+     </div>
+     <div class="service-card">
+      <div class="service-header">
+       <h3>Esmaltação em Gel</h3>
+      </div>
+      <div class="service-body">
+       <p>Esmaltação em gel de longa duração com cores vibrantes, acabamento profissional e brilho que permanece por semanas.</p>
+       <div class="photo-placeholder"
+       style="background-image: url('fotos/Banho.jpg');
+       background-size: cover;
+       background-repeat: no-repeat;
+       background-position: center;
+        "></div>
+      </div>
+     </div>
+     <div class="service-card">
+      <div class="service-header">
+       <h3>Nail Art</h3>
+      </div>
+      <div class="service-body">
+       <p>Designs personalizados e criativos para deixar suas unhas únicas, expressando sua personalidade com arte e muito estilo.</p>
+       <div class="photo-placeholder" 
+       style="background-image: url('fotos/Nail.jpg');
+       background-size: cover;
+       background-repeat: no-repeat;
+       background-position: center;
+        ">
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section><!-- Julia Section -->
+  <section id="julia">
+   <div class="container">
+    <h2 class="section-title" id="julia-title">Julia Blinke - Nail Designer</h2>
+    <div class="julia-content">
+     <div class="julia-text">
+      <h3>Julia Silva Blinke</h3>
+      <div class="professional-badge"><span>Nail Designer Certificada</span>
+      </div>
+      <p id="julia-description"><b>Profissional especializada em nail design com sólida formação técnica e ampla experiência no mercado de beleza. Dedica-se há mais de 4 anos ao aperfeiçoamento contínuo de técnicas inovadoras, sempre priorizando a saúde das unhas e a satisfação das clientes.</b></p>
+      <div class="credentials-grid">
+       <div class="credential-item">
+        <div class="credential-info"><strong>Experiência Comprovada</strong>
+         <p>Mais de 1.000 atendimentos realizados com excelência</p>
+        </div>
+       </div>
+       <div class="credential-item">
+        <div class="credential-info"><strong>Tempo de Mercado</strong>
+         <p>4+ anos de atuação profissional especializada</p>
+        </div>
+       </div>
+       <div class="credential-item">
+        <div class="credential-info"><strong>Especialização</strong>
+         <p>Fibra de vidro, gel e nail art personalizada</p>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="julia-photo" 
+     style="background-image: url('fotos/FotoJulia.jpg');
+       background-size: cover;
+       background-repeat: no-repeat;
+       background-position: center;
+        ">
+     </div>
+    </div>
+   </div>
+  </section><!-- Contact Section -->
+  <section id="contact">
+   <div class="container">
+    <h2 class="section-title" id="contact-title">Contatos e Endereço</h2>
+    <div class="contact-content">
+     <div class="contact-info">
+      <div class="contact-item">
+       <div class="contact-details"><strong>Endereço</strong>
+        <p id="address-text"><b>Rua Conselheiro Antônio Prado nº 471<br>
+         Centro, São Simão/SP</b></p>
+       </div>
+      </div>
+      <div class="contact-item">
+       <div class="contact-details"><strong>Telefone</strong>
+        <p id="phone-text"><b>(16) 99313-4829</b></p>
+       </div>
+      </div>
+     </div>
+     <div class="social-buttons"><a href="https://www.instagram.com/blinkenails/" target="_blank" rel="noopener noreferrer" class="social-link">
+       <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" fill="currentColor" />
+       </svg> Instagram </a> <a href="https://wa.me/+5516993134829?text=Ol%C3%A1,%20vim%20pelo%20site,%20gostaria%20de%20agendar%20um%20hor%C3%A1rio!" target="_blank" rel="noopener noreferrer" class="social-link">
+       <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" fill="currentColor" />
+       </svg> Agendar Horário </a>
+     </div>
+    </div>
+   </div>
+  </section><!-- Footer -->
+  <footer>
+   <p>© 2024 Blinke Nails - Todos os direitos reservados</p>
+  </footer>
+  <script>
+    const defaultConfig = {
+      hero_title: "Seja bem vinda!",
+      hero_subtitle: "Sua autoestima é a minha realização",
+      cta_button_text: "Agendar Horário",
+      about_title: "Sobre o Studio",
+      about_text: "O Studio Blinke Nails, localizado na Rua Conselheiro Antonio Prado, nº 471, Centro em São Simão/SP, foi fundado pela Nail designer Julia Blinke. O studio é especializado em nail design, com serviços como alongamento de unhas em fibra de vidro, esmaltação em gel e nail art. Há mais de 4 anos trazendo autoestima para sua vida.",
+      services_title: "Nossos Serviços",
+      julia_title: "Julia Blinke - Nail Designer",
+      julia_description: "Profissional especializada em nail design com sólida formação técnica e ampla experiência no mercado de beleza. Dedica-se há mais de 4 anos ao aperfeiçoamento contínuo de técnicas inovadoras, sempre priorizando a saúde das unhas e a satisfação das clientes.",
+      contact_title: "Contatos e Endereço",
+      address_text: "Rua Conselheiro Antônio Prado nº 471\nCentro, São Simão/SP",
+      phone_text: "(16) 99313-4829",
+      primary_color: "#1e3a8a",
+      secondary_color: "#3b82f6",
+      background_color: "#fafafa",
+      text_color: "#2d2d2d",
+      card_background: "#ffffff"
+    };
+
+    let config = { ...defaultConfig };
+
+    async function onConfigChange(newConfig) {
+      config = { ...config, ...newConfig };
+
+      // Update text content
+      document.getElementById('hero-title').textContent = config.hero_title;
+      document.getElementById('hero-subtitle').textContent = config.hero_subtitle;
+      const ctaButtonText = document.getElementById('cta-button-text');
+      if (ctaButtonText) ctaButtonText.textContent = config.cta_button_text;
+      document.getElementById('about-title').textContent = config.about_title;
+      document.getElementById('about-text').textContent = config.about_text;
+      document.getElementById('services-title').textContent = config.services_title;
+      document.getElementById('julia-title').textContent = config.julia_title;
+      document.getElementById('julia-description').textContent = config.julia_description;
+      document.getElementById('contact-title').textContent = config.contact_title;
+      document.getElementById('address-text').innerHTML = config.address_text.replace(/\n/g, '<br>');
+      document.getElementById('phone-text').textContent = config.phone_text;
+
+      // Update colors
+      const hero = document.querySelector('.hero');
+      hero.style.background = `linear-gradient(135deg, ${config.secondary_color} 0%, ${config.primary_color} 100%)`;
+
+      document.body.style.background = config.background_color;
+      document.body.style.color = config.text_color;
+
+      const sectionTitles = document.querySelectorAll('.section-title');
+      sectionTitles.forEach(title => {
+        title.style.color = config.primary_color;
+      });
+
+      const serviceCards = document.querySelectorAll('.service-card');
+      serviceCards.forEach(card => {
+        card.style.background = config.card_background;
+        const h3 = card.querySelector('h3');
+        if (h3) h3.style.color = config.primary_color;
+      });
+
+      const ctaButton = document.querySelector('.cta-button');
+      ctaButton.style.background = config.card_background;
+      ctaButton.style.color = config.primary_color;
+
+      const socialLinks = document.querySelectorAll('.social-link');
+      socialLinks.forEach(link => {
+        link.style.background = `linear-gradient(135deg, ${config.secondary_color} 0%, ${config.primary_color} 100%)`;
+      });
+
+      const juliaPhoto = document.querySelector('.julia-photo');
+      juliaPhoto.style.background = `linear-gradient(135deg, ${config.secondary_color} 0%, ${config.primary_color} 100%)`;
+
+      const aboutContent = document.querySelector('.about-content');
+      aboutContent.style.background = config.card_background;
+
+      const juliaText = document.querySelector('.julia-text');
+      juliaText.style.background = config.card_background;
+
+      const contactInfo = document.querySelector('.contact-info');
+      contactInfo.style.background = config.card_background;
+
+      const juliaStrong = document.querySelectorAll('.julia-text strong');
+      juliaStrong.forEach(strong => {
+        strong.style.color = config.primary_color;
+      });
+
+      const contactStrong = document.querySelectorAll('.contact-details strong');
+      contactStrong.forEach(strong => {
+        strong.style.color = config.primary_color;
+      });
+
+      const contactIcons = document.querySelectorAll('.contact-icon');
+      contactIcons.forEach(icon => {
+        icon.style.color = config.primary_color;
+      });
+
+      const photoPlaceholders = document.querySelectorAll('.photo-placeholder');
+      photoPlaceholders.forEach(placeholder => {
+        placeholder.style.borderColor = config.primary_color;
+        placeholder.style.color = config.primary_color;
+      });
+
+      const sectionAfter = document.querySelectorAll('.section-title::after');
+      const style = document.createElement('style');
+      style.textContent = `
+        .section-title::after {
+          background: linear-gradient(135deg, ${config.secondary_color} 0%, ${config.primary_color} 100%) !important;
+        }
+      `;
+      document.head.appendChild(style);
+    }
+
+    function mapToCapabilities(config) {
+      return {
+        recolorables: [
+          {
+            get: () => config.primary_color || defaultConfig.primary_color,
+            set: (value) => {
+              config.primary_color = value;
+              if (window.elementSdk) {
+                window.elementSdk.setConfig({ primary_color: value });
+              }
+            }
+          },
+          {
+            get: () => config.secondary_color || defaultConfig.secondary_color,
+            set: (value) => {
+              config.secondary_color = value;
+              if (window.elementSdk) {
+                window.elementSdk.setConfig({ secondary_color: value });
+              }
+            }
+          },
+          {
+            get: () => config.background_color || defaultConfig.background_color,
+            set: (value) => {
+              config.background_color = value;
+              if (window.elementSdk) {
+                window.elementSdk.setConfig({ background_color: value });
+              }
+            }
+          },
+          {
+            get: () => config.text_color || defaultConfig.text_color,
+            set: (value) => {
+              config.text_color = value;
+              if (window.elementSdk) {
+                window.elementSdk.setConfig({ text_color: value });
+              }
+            }
+          },
+          {
+            get: () => config.card_background || defaultConfig.card_background,
+            set: (value) => {
+              config.card_background = value;
+              if (window.elementSdk) {
+                window.elementSdk.setConfig({ card_background: value });
+              }
+            }
+          }
+        ],
+        borderables: [],
+        fontEditable: undefined,
+        fontSizeable: undefined
+      };
+    }
+
+    function mapToEditPanelValues(config) {
+      return new Map([
+        ["hero_title", config.hero_title || defaultConfig.hero_title],
+        ["hero_subtitle", config.hero_subtitle || defaultConfig.hero_subtitle],
+        ["cta_button_text", config.cta_button_text || defaultConfig.cta_button_text],
+        ["about_title", config.about_title || defaultConfig.about_title],
+        ["about_text", config.about_text || defaultConfig.about_text],
+        ["services_title", config.services_title || defaultConfig.services_title],
+        ["julia_title", config.julia_title || defaultConfig.julia_title],
+        ["julia_description", config.julia_description || defaultConfig.julia_description],
+        ["contact_title", config.contact_title || defaultConfig.contact_title],
+        ["address_text", config.address_text || defaultConfig.address_text],
+        ["phone_text", config.phone_text || defaultConfig.phone_text]
+      ]);
+    }
+
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
+      });
+    }
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a0b00a1c48bf94d',t:'MTc2MzUwNTk3MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
